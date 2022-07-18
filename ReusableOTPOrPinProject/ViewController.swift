@@ -2,14 +2,14 @@
 //  ViewController.swift
 //  ReusableOTPOrPinProject
 //
-//  Created by GIGL iOS on 18/07/2022.
+//  Created by Tes on 18/07/2022.
 //
 
 import UIKit
 
 class ViewController: UIViewController {
     
-    let child = ChildViewController()
+//    let child = ChildViewController()
 
     var okButton: UIButton = {
         let button = UIButton()
@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .green
         activateConstraint()
     }
     
@@ -44,6 +44,15 @@ class ViewController: UIViewController {
     
     @objc func didTapOkButton(_ sender: Any) {
         print("ok tapped")
+        let vc = ChildViewController()
+        
+        if let sheet = vc.sheetPresentationController {
+            sheet.detents = [.medium()]
+            sheet.prefersGrabberVisible = true
+            sheet.preferredCornerRadius = 30
+        }
+//        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: true)
     }
 }
 
