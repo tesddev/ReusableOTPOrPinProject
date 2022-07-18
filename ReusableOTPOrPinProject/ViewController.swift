@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-//    let child = ChildViewController()
+    let child = ChildViewController()
 
     var okButton: UIButton = {
         let button = UIButton()
