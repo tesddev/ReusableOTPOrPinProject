@@ -21,6 +21,17 @@ class ChildViewController: UIViewController {
         createTheView()
         activateConstraint()
         view.backgroundColor = .white
+        codeTextField.didEnterLastDigit = { code in
+            print(code)
+            if code == "1234"{
+                print("good")
+            } else {
+                DispatchQueue.main.async {
+                    print("not good")
+                    self.codeTextField.paintRed()
+                }
+            }
+        }
     }
     
     var cancelButton: UIButton = {
@@ -64,16 +75,11 @@ class ChildViewController: UIViewController {
         return button
     }()
     
-    let categoryTextField: UITextField = {
-        let textField = UITextField()
+    let codeTextField: OTPTextField = {
+        let textField = OTPTextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor.black.cgColor
-        textField.layer.backgroundColor = UIColor.white.cgColor
-        textField.setPaddingPoints(20)
-        textField.autocorrectionType = .no
-        textField.isUserInteractionEnabled = false
-        textField.addTarget(ChildViewController.self, action: #selector(textFieldDidChange), for: .editingChanged)
+        textField.backgroundColor = .systemBackground
+        textField.configure()
         return textField
     }()
     
@@ -91,12 +97,12 @@ class ChildViewController: UIViewController {
             instruction2Label.topAnchor.constraint(equalTo: instructionLabel.bottomAnchor, constant: 20),
             instruction2Label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            categoryTextField.topAnchor.constraint(equalTo: instruction2Label.bottomAnchor, constant: 25),
-            categoryTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            categoryTextField.heightAnchor.constraint(equalToConstant: 100),
-            categoryTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7),
+            codeTextField.topAnchor.constraint(equalTo: instruction2Label.bottomAnchor, constant: 25),
+            codeTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            codeTextField.heightAnchor.constraint(equalToConstant: 100),
+            codeTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7),
             
-            okButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80),
+            okButton.topAnchor.constraint(equalTo: codeTextField.bottomAnchor, constant: 80),
             okButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             okButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             okButton.heightAnchor.constraint(equalToConstant: 50),
@@ -110,7 +116,7 @@ class ChildViewController: UIViewController {
         view.addSubview(okButton)
         view.addSubview(instructionLabel)
         view.addSubview(instruction2Label)
-        view.addSubview(categoryTextField)
+        view.addSubview(codeTextField)
         view.addSubview(cancelButton)
     }
     

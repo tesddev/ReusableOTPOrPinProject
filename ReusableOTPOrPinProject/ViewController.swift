@@ -47,7 +47,7 @@ class ViewController: UIViewController {
         let vc = ChildViewController()
         
         if let sheet = vc.sheetPresentationController {
-            sheet.detents = [.medium()]
+            sheet.detents = [.medium(), .large()]
             sheet.prefersGrabberVisible = true
             sheet.preferredCornerRadius = 30
         }
