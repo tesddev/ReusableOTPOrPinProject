@@ -14,25 +14,6 @@ protocol ChildViewControllerDelegate: AnyObject {
 class ChildViewController: UIViewController {
     
     weak var delegate: ChildViewControllerDelegate?
-        
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        navigationController?.navigationBar.isHidden = true
-        createTheView()
-        activateConstraint()
-        view.backgroundColor = .white
-        codeTextField.didEnterLastDigit = { code in
-            print(code)
-            if code == "1234"{
-                print("good")
-            } else {
-                DispatchQueue.main.async {
-                    print("not good")
-                    self.codeTextField.paintRed()
-                }
-            }
-        }
-    }
     
     var cancelButton: UIButton = {
         let button = UIButton()
@@ -62,7 +43,7 @@ class ChildViewController: UIViewController {
         return label
     }()
     
-    var okButton: UIButton = {
+    var confirmButton: UIButton = {
         let button = UIButton()
         button.setTitle("Confirm", for: .normal)
         button.clipsToBounds = true
@@ -82,6 +63,25 @@ class ChildViewController: UIViewController {
         textField.configure()
         return textField
     }()
+        
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationController?.navigationBar.isHidden = true
+        createTheView()
+        activateConstraint()
+        view.backgroundColor = .white
+        codeTextField.didEnterLastDigit = { code in
+            print(code)
+            if code == "1234"{
+                print("good")
+            } else {
+                DispatchQueue.main.async {
+                    print("not good")
+                    self.codeTextField.paintRed()
+                }
+            }
+        }
+    }
     
     func activateConstraint() {
         NSLayoutConstraint.activate([
@@ -102,10 +102,10 @@ class ChildViewController: UIViewController {
             codeTextField.heightAnchor.constraint(equalToConstant: 100),
             codeTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7),
             
-            okButton.topAnchor.constraint(equalTo: codeTextField.bottomAnchor, constant: 80),
-            okButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            okButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
-            okButton.heightAnchor.constraint(equalToConstant: 50),
+            confirmButton.topAnchor.constraint(equalTo: codeTextField.bottomAnchor, constant: 80),
+            confirmButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            confirmButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            confirmButton.heightAnchor.constraint(equalToConstant: 50),
             
         ])
     }
@@ -113,7 +113,7 @@ class ChildViewController: UIViewController {
     
     private func createTheView() {
         
-        view.addSubview(okButton)
+        view.addSubview(confirmButton)
         view.addSubview(instructionLabel)
         view.addSubview(instruction2Label)
         view.addSubview(codeTextField)

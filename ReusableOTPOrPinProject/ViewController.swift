@@ -24,6 +24,14 @@ class ViewController: UIViewController {
         return button
     }()
     
+    let contentView: UIView = {
+        let container = UIView()
+        container.translatesAutoresizingMaskIntoConstraints = false
+        container.backgroundColor = .red
+        container.isHidden = true
+        return container
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .green
@@ -37,21 +45,23 @@ class ViewController: UIViewController {
             okButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             okButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             okButton.widthAnchor.constraint(equalToConstant: 60),
-            okButton.heightAnchor.constraint(equalToConstant: 30),
+            okButton.heightAnchor.constraint(equalToConstant: 30)
             
         ])
     }
     
     @objc func didTapOkButton(_ sender: Any) {
         print("ok tapped")
-        let vc = ChildViewController()
+//        let vc = ChildViewController()
+        let vc = DetailViewController()
+        vc.modalPresentationStyle = .pageSheet
         
         if let sheet = vc.sheetPresentationController {
             sheet.detents = [.medium(), .large()]
             sheet.prefersGrabberVisible = true
             sheet.preferredCornerRadius = 30
+            sheet.sourceView = contentView
         }
-//        vc.modalPresentationStyle = .overCurrentContext
         self.present(vc, animated: true)
     }
 }

@@ -15,6 +15,7 @@
 		8237D75C2885CD2C00911091 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8237D75A2885CD2C00911091 /* LaunchScreen.storyboard */; };
 		8237D7642885D0C500911091 /* ChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8237D7632885D0C500911091 /* ChildViewController.swift */; };
 		827008B02886B7C8001D499A /* OTPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827008AF2886B7C8001D499A /* OTPTextField.swift */; };
+		827008B2288701F4001D499A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827008B1288701F4001D499A /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		8237D75D2885CD2C00911091 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8237D7632885D0C500911091 /* ChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildViewController.swift; sourceTree = "<group>"; };
 		827008AF2886B7C8001D499A /* OTPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPTextField.swift; sourceTree = "<group>"; };
+		827008B1288701F4001D499A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				8237D75D2885CD2C00911091 /* Info.plist */,
 				8237D7632885D0C500911091 /* ChildViewController.swift */,
 				827008AF2886B7C8001D499A /* OTPTextField.swift */,
+				827008B1288701F4001D499A /* DetailViewController.swift */,
 			);
 			path = ReusableOTPOrPinProject;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 				8237D7542885CD2900911091 /* ViewController.swift in Sources */,
 				8237D7502885CD2900911091 /* AppDelegate.swift in Sources */,
 				8237D7522885CD2900911091 /* SceneDelegate.swift in Sources */,
+				827008B2288701F4001D499A /* DetailViewController.swift in Sources */,
 				8237D7642885D0C500911091 /* ChildViewController.swift in Sources */,
 				827008B02886B7C8001D499A /* OTPTextField.swift in Sources */,
 			);

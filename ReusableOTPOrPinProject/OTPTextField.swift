@@ -9,7 +9,6 @@ import UIKit
 
 class OTPTextField: UITextField {
     var digitLabels = [UILabel]()
-//    var digitTextField = [UITextField]()
     private var isConfigured = false
     var didEnterLastDigit: ((String)-> Void)?
     private lazy var tapRecognizer: UITapGestureRecognizer = {
@@ -61,11 +60,8 @@ class OTPTextField: UITextField {
             let label = UILabel()
             label.translatesAutoresizingMaskIntoConstraints = false
             label.textAlignment = .center
-//            label.font = .systemFont(ofSize: 40)
             label.backgroundColor = .systemGray6
             label.isUserInteractionEnabled = true
-            //            label.layer.borderColor = UIColor.black.cgColor
-            //            label.layer.borderWidth = 1
             label.layer.cornerRadius = 4
             
             stackView.addArrangedSubview(label)
@@ -107,7 +103,6 @@ extension OTPTextField: UITextFieldDelegate {
 extension OTPTextField: ValidationCheckDelegate {
     func paintRed() {
         digitLabels.forEach { label in
-            label.layer.borderColor = UIColor.red.cgColor
             label.textColor = .red
         }
     }
