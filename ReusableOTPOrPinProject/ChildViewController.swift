@@ -14,6 +14,7 @@ protocol ChildViewControllerDelegate: AnyObject {
 class ChildViewController: UIViewController {
     
     weak var delegate: ChildViewControllerDelegate?
+    private var walletPin = 0
     
     var cancelButton: UIButton = {
         let button = UIButton()
@@ -72,14 +73,7 @@ class ChildViewController: UIViewController {
         view.backgroundColor = .white
         codeTextField.didEnterLastDigit = { code in
             print(code)
-            if code == "1234"{
-                print("good")
-            } else {
-                DispatchQueue.main.async {
-                    print("not good")
-                    self.codeTextField.paintRed()
-                }
-            }
+            self.walletPin = Int(code) ?? 0
         }
     }
     
@@ -122,8 +116,15 @@ class ChildViewController: UIViewController {
     
     @objc func didTapOkButton(_ sender: Any) {
         print("ok tapped")
-        self.dismiss(animated: true)
-        delegate?.moveToNextViewController()
+        /// Do network calls to verify password before dismissing
+        if walletPin == 1234 {
+            print("good")
+            self.dismiss(animated: true)
+            delegate?.moveToNextViewController()
+        } else {
+            print("not good")
+            self.codeTextField.paintRed()
+        }
     }
     
     @objc func didTapCancelButton() {
@@ -131,16 +132,6 @@ class ChildViewController: UIViewController {
     }
     
     @objc func textFieldDidChange() {
-    }
-}
-
-extension UITextField {
-    func setPaddingPoints(_ amount:CGFloat){
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
-        self.leftView = paddingView
-        self.leftViewMode = .always
-        self.rightView = paddingView
-        self.rightViewMode = .always
     }
 }
 

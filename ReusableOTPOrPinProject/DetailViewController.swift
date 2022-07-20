@@ -101,30 +101,30 @@ class DetailViewController: UIViewController {
     
     var copyAccButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "secondClone"), for: .normal)
+        button.setImage(UIImage(named: "clone"), for: .normal)
         button.addTarget(self, action: #selector(didTapDownloadButton), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImageTintColor(UIColor.systemGray4)
+        button.setImageTintColor(#colorLiteral(red: 0.8941177726, green: 0.8941177726, blue: 0.8941177726, alpha: 1))
         return button
     }()
     
     var copyEmailButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "secondClone"), for: .normal)
+        button.setImage(UIImage(named: "clone"), for: .normal)
         button.addTarget(self, action: #selector(didTapDownloadButton), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImageTintColor(UIColor.systemGray4)
+        button.setImageTintColor(#colorLiteral(red: 0.8941177726, green: 0.8941177726, blue: 0.8941177726, alpha: 1))
         return button
     }()
     
     var copyPasswordButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "thirdClone"), for: .normal)
+        button.setImage(UIImage(named: "clone"), for: .normal)
         button.tintColor = .systemGray4
         button.setTitleColor(UIColor.systemGray2, for: .normal)
         button.addTarget(self, action: #selector(didTapDownloadButton), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImageTintColor(UIColor.systemGray4)
+        button.setImageTintColor(#colorLiteral(red: 0.8941177726, green: 0.8941177726, blue: 0.8941177726, alpha: 1))
         return button
     }()
     
@@ -215,20 +215,20 @@ class DetailViewController: UIViewController {
             passwordLabel.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: 20),
             passwordLabel.leadingAnchor.constraint(equalTo: accNoLabel.leadingAnchor),
             
-            copyAccButton.topAnchor.constraint(equalTo: accNoLabel.topAnchor, constant: -3),
+            copyAccButton.topAnchor.constraint(equalTo: accNoLabel.topAnchor),
             copyAccButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            copyAccButton.widthAnchor.constraint(equalToConstant: 30),
-            copyAccButton.heightAnchor.constraint(equalToConstant: 30),
+            copyAccButton.widthAnchor.constraint(equalToConstant: 20),
+            copyAccButton.heightAnchor.constraint(equalToConstant: 20),
             
-            copyEmailButton.topAnchor.constraint(equalTo: emailLabel.topAnchor, constant: -3),
+            copyEmailButton.topAnchor.constraint(equalTo: emailLabel.topAnchor),
             copyEmailButton.trailingAnchor.constraint(equalTo: copyAccButton.trailingAnchor),
-            copyEmailButton.widthAnchor.constraint(equalToConstant: 30),
-            copyEmailButton.heightAnchor.constraint(equalToConstant: 30),
+            copyEmailButton.widthAnchor.constraint(equalToConstant: 20),
+            copyEmailButton.heightAnchor.constraint(equalToConstant: 20),
             
-            copyPasswordButton.topAnchor.constraint(equalTo: passwordLabel.topAnchor, constant: -3),
+            copyPasswordButton.topAnchor.constraint(equalTo: passwordLabel.topAnchor),
             copyPasswordButton.trailingAnchor.constraint(equalTo: copyAccButton.trailingAnchor),
-            copyPasswordButton.widthAnchor.constraint(equalToConstant: 30),
-            copyPasswordButton.heightAnchor.constraint(equalToConstant: 30),
+            copyPasswordButton.widthAnchor.constraint(equalToConstant: 20),
+            copyPasswordButton.heightAnchor.constraint(equalToConstant: 20),
             
             downloadAppButton.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 30),
             downloadAppButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
