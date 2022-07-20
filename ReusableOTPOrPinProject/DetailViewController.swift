@@ -101,28 +101,30 @@ class DetailViewController: UIViewController {
     
     var copyAccButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "doc.on.doc.fill"), for: .normal)
-        button.tintColor = .systemGray4
+        button.setImage(UIImage(named: "secondClone"), for: .normal)
         button.addTarget(self, action: #selector(didTapDownloadButton), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImageTintColor(UIColor.systemGray4)
         return button
     }()
     
     var copyEmailButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "doc.on.doc.fill"), for: .normal)
-        button.tintColor = .systemGray4
+        button.setImage(UIImage(named: "secondClone"), for: .normal)
         button.addTarget(self, action: #selector(didTapDownloadButton), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImageTintColor(UIColor.systemGray4)
         return button
     }()
     
     var copyPasswordButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "doc.on.doc.fill"), for: .normal)
+        button.setImage(UIImage(named: "thirdClone"), for: .normal)
         button.tintColor = .systemGray4
+        button.setTitleColor(UIColor.systemGray2, for: .normal)
         button.addTarget(self, action: #selector(didTapDownloadButton), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImageTintColor(UIColor.systemGray4)
         return button
     }()
     
@@ -215,12 +217,18 @@ class DetailViewController: UIViewController {
             
             copyAccButton.topAnchor.constraint(equalTo: accNoLabel.topAnchor, constant: -3),
             copyAccButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            copyAccButton.widthAnchor.constraint(equalToConstant: 30),
+            copyAccButton.heightAnchor.constraint(equalToConstant: 30),
             
             copyEmailButton.topAnchor.constraint(equalTo: emailLabel.topAnchor, constant: -3),
             copyEmailButton.trailingAnchor.constraint(equalTo: copyAccButton.trailingAnchor),
+            copyEmailButton.widthAnchor.constraint(equalToConstant: 30),
+            copyEmailButton.heightAnchor.constraint(equalToConstant: 30),
             
             copyPasswordButton.topAnchor.constraint(equalTo: passwordLabel.topAnchor, constant: -3),
             copyPasswordButton.trailingAnchor.constraint(equalTo: copyAccButton.trailingAnchor),
+            copyPasswordButton.widthAnchor.constraint(equalToConstant: 30),
+            copyPasswordButton.heightAnchor.constraint(equalToConstant: 30),
             
             downloadAppButton.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 30),
             downloadAppButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -245,6 +253,16 @@ class DetailViewController: UIViewController {
     
     @objc func didTapCopyButton() {
         print("Copied")
+    }
+
+}
+
+extension UIButton{
+
+    func setImageTintColor(_ color: UIColor) {
+        let tintedImage = self.imageView?.image?.withRenderingMode(.alwaysTemplate)
+        self.setImage(tintedImage, for: .normal)
+        self.tintColor = color
     }
 
 }

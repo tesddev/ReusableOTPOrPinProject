@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ChildViewControllerDelegate {
     
 //    let child = ChildViewController()
 
@@ -22,14 +22,6 @@ class ViewController: UIViewController {
         button.addTarget(self, action: #selector(didTapOkButton), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
-    }()
-    
-    let contentView: UIView = {
-        let container = UIView()
-        container.translatesAutoresizingMaskIntoConstraints = false
-        container.backgroundColor = .red
-        container.isHidden = true
-        return container
     }()
     
     override func viewDidLoad() {
@@ -52,17 +44,25 @@ class ViewController: UIViewController {
     
     @objc func didTapOkButton(_ sender: Any) {
         print("ok tapped")
-//        let vc = ChildViewController()
-        let vc = DetailViewController()
-        vc.modalPresentationStyle = .pageSheet
-        
+        let vc = ChildViewController()
+        vc.delegate = self
         if let sheet = vc.sheetPresentationController {
             sheet.detents = [.medium(), .large()]
             sheet.prefersGrabberVisible = true
             sheet.preferredCornerRadius = 30
-            sheet.sourceView = contentView
         }
         self.present(vc, animated: true)
     }
+    
+    func moveToNextViewController() {
+        let vc = DetailViewController()
+        if let sheet = vc.sheetPresentationController {
+            sheet.detents = [.medium(), .large()]
+            sheet.prefersGrabberVisible = true
+            sheet.preferredCornerRadius = 30
+        }
+        self.present(vc, animated: true)
+    }
+    
 }
 

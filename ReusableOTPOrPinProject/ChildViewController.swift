@@ -122,8 +122,8 @@ class ChildViewController: UIViewController {
     
     @objc func didTapOkButton(_ sender: Any) {
         print("ok tapped")
-        delegate?.moveToNextViewController()
         self.dismiss(animated: true)
+        delegate?.moveToNextViewController()
     }
     
     @objc func didTapCancelButton() {

@@ -60,7 +60,7 @@ class OTPTextField: UITextField {
             let label = UILabel()
             label.translatesAutoresizingMaskIntoConstraints = false
             label.textAlignment = .center
-            label.backgroundColor = .systemGray6
+            label.backgroundColor = #colorLiteral(red: 0.9363695979, green: 0.9413411021, blue: 0.9412533045, alpha: 1)
             label.isUserInteractionEnabled = true
             label.layer.cornerRadius = 4
             
@@ -71,6 +71,9 @@ class OTPTextField: UITextField {
         
         return stackView
     }
+    
+    let viewColor = #colorLiteral(red: 0.980392158, green: 0.980392158, blue: 0.980392158, alpha: 1)
+    let copyButtonColor = #colorLiteral(red: 0.8941177726, green: 0.8941177726, blue: 0.8941177726, alpha: 1)
     
     @objc private func textDidChange(){
         guard let text = self.text, text.count <= digitLabels.count else { return }
