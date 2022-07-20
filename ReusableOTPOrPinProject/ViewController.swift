@@ -9,9 +9,7 @@ import UIKit
 
 class ViewController: UIViewController, ChildViewControllerDelegate {
     
-//    let child = ChildViewController()
-
-    var okButton: UIButton = {
+    lazy var okButton: UIButton = {
         let button = UIButton()
         button.setTitle("Ok", for: .normal)
         button.clipsToBounds = true
@@ -26,7 +24,7 @@ class ViewController: UIViewController, ChildViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .green
+        view.backgroundColor = .white
         activateConstraint()
     }
     

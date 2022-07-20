@@ -72,9 +72,6 @@ class OTPTextField: UITextField {
         return stackView
     }
     
-    let viewColor = #colorLiteral(red: 0.980392158, green: 0.980392158, blue: 0.980392158, alpha: 1)
-    let copyButtonColor = #colorLiteral(red: 0.8941177726, green: 0.8941177726, blue: 0.8941177726, alpha: 1)
-    
     @objc private func textDidChange(){
         guard let text = self.text, text.count <= digitLabels.count else { return }
         
@@ -116,8 +113,19 @@ protocol ValidationCheckDelegate: AnyObject {
 }
 
 extension UILabel {
+    /// This commented out function is for cases where there is no need for the user to see what they type in the label
+//    func hideInDots(){
+//        self.font = UIFont.systemFont(ofSize: 80)
+//        self.text = "·"
+//    }
+    
+    /// If you want user to see briefly, their inputs as they type
     func hideInDots(){
-        self.font = UIFont.systemFont(ofSize: 80)
-        self.text = "·"
+        self.font = UIFont.systemFont(ofSize: 40)
+        self.text = self.text
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+            self.font = UIFont.systemFont(ofSize: 80)
+            self.text = "·"
+        }
     }
 }

@@ -2,14 +2,14 @@
 //  DetailViewController.swift
 //  ReusableOTPOrPinProject
 //
-//  Created by GIGL iOS on 19/07/2022.
+//  Created by Tes on 19/07/2022.
 //
 
 import UIKit
 
 class DetailViewController: UIViewController {
     
-    var cancelButton: UIButton = {
+    lazy var cancelButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
         button.tintColor = .black
@@ -99,36 +99,36 @@ class DetailViewController: UIViewController {
         return label
     }()
     
-    var copyAccButton: UIButton = {
+    lazy var copyAccButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "clone"), for: .normal)
-        button.addTarget(self, action: #selector(didTapDownloadButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapCopyAccountButton), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImageTintColor(#colorLiteral(red: 0.8941177726, green: 0.8941177726, blue: 0.8941177726, alpha: 1))
         return button
     }()
     
-    var copyEmailButton: UIButton = {
+    lazy var copyEmailButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "clone"), for: .normal)
-        button.addTarget(self, action: #selector(didTapDownloadButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapCopyEmailButton), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImageTintColor(#colorLiteral(red: 0.8941177726, green: 0.8941177726, blue: 0.8941177726, alpha: 1))
         return button
     }()
     
-    var copyPasswordButton: UIButton = {
+    lazy var copyPasswordButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "clone"), for: .normal)
         button.tintColor = .systemGray4
         button.setTitleColor(UIColor.systemGray2, for: .normal)
-        button.addTarget(self, action: #selector(didTapDownloadButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapCopyPasswordButton), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImageTintColor(#colorLiteral(red: 0.8941177726, green: 0.8941177726, blue: 0.8941177726, alpha: 1))
         return button
     }()
     
-    var downloadAppButton: UIButton = {
+    lazy var downloadAppButton: UIButton = {
         let button = UIButton()
         button.setTitle("Download Stellas App", for: .normal)
         button.clipsToBounds = true
@@ -141,7 +141,7 @@ class DetailViewController: UIViewController {
         return button
     }()
     
-    var closeButton: UIButton = {
+    lazy var closeButton: UIButton = {
         let button = UIButton()
         button.setTitle("Close", for: .normal)
         button.clipsToBounds = true
@@ -248,11 +248,21 @@ class DetailViewController: UIViewController {
     }
     
     @objc func didTapDownloadButton() {
-        print("Download")
+        if let url = URL(string: "https://apps.apple.com/ng/app/stellas-bank-anonymously/id1592332069") {
+            UIApplication.shared.open(url)
+        }
     }
     
-    @objc func didTapCopyButton() {
-        print("Copied")
+    @objc func didTapCopyAccountButton() {
+        UIPasteboard.general.string = theAccLabel.text
+    }
+    
+    @objc func didTapCopyEmailButton() {
+        UIPasteboard.general.string = theEmailLabel.text
+    }
+    
+    @objc func didTapCopyPasswordButton() {
+        UIPasteboard.general.string = thePasswordLabel.text
     }
 
 }

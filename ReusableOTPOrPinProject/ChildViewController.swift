@@ -16,7 +16,7 @@ class ChildViewController: UIViewController {
     weak var delegate: ChildViewControllerDelegate?
     private var walletPin = 0
     
-    var cancelButton: UIButton = {
+    lazy var cancelButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
         button.tintColor = .black
@@ -44,7 +44,7 @@ class ChildViewController: UIViewController {
         return label
     }()
     
-    var confirmButton: UIButton = {
+    lazy var confirmButton: UIButton = {
         let button = UIButton()
         button.setTitle("Confirm", for: .normal)
         button.clipsToBounds = true
@@ -93,7 +93,7 @@ class ChildViewController: UIViewController {
             
             codeTextField.topAnchor.constraint(equalTo: instruction2Label.bottomAnchor, constant: 25),
             codeTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            codeTextField.heightAnchor.constraint(equalToConstant: 100),
+            codeTextField.heightAnchor.constraint(equalToConstant: 80),
             codeTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7),
             
             confirmButton.topAnchor.constraint(equalTo: codeTextField.bottomAnchor, constant: 80),
@@ -106,7 +106,6 @@ class ChildViewController: UIViewController {
     
     
     private func createTheView() {
-        
         view.addSubview(confirmButton)
         view.addSubview(instructionLabel)
         view.addSubview(instruction2Label)
@@ -129,9 +128,6 @@ class ChildViewController: UIViewController {
     
     @objc func didTapCancelButton() {
         self.dismiss(animated: true)
-    }
-    
-    @objc func textFieldDidChange() {
     }
 }
 
